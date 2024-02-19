@@ -1,0 +1,146 @@
+{
+  "categories": [
+    {
+      "id": "cat1",
+      "name": "Electronics",
+      "billboard": {
+        "id": "bill1",
+        "label": "Latest in Tech!",
+        "imageUrl": "https://example.com/billboard/electronics.jpg"
+      }
+    },
+    {
+      "id": "cat2",
+      "name": "Clothing",
+      "billboard": {
+        "id": "bill2",
+        "label": "Fashion Trends",
+        "imageUrl": "https://example.com/billboard/clothing.jpg"
+      }
+    },
+    {
+      "id": "cat3",
+      "name": "Home & Garden",
+      "billboard": {
+        "id": "bill3",
+        "label": "Decorate Your Space",
+        "imageUrl": "https://example.com/billboard/home-garden.jpg"
+      }
+    },
+    {
+      "id": "cat4",
+      "name": "Toys & Games",
+      "billboard": {
+        "id": "bill4",
+        "label": "Fun for Everyone",
+        "imageUrl": "https://example.com/billboard/toys-games.jpg"
+      }
+    }
+  ],
+  "sizes": [
+    {
+      "id": "size1",
+      "name": "Small",
+      "value": "S"
+    },
+    {
+      "id": "size2",
+      "name": "Medium",
+      "value": "M"
+    },
+    {
+      "id": "size3",
+      "name": "Large",
+      "value": "L"
+    },
+    {
+      "id": "size4",
+      "name": "Extra Large",
+      "value": "XL"
+    }
+  ],
+  "colors": [
+    {
+      "id": "color1",
+      "name": "Red",
+      "value": "#FF0000"
+    },
+    {
+      "id": "color2",
+      "name": "Blue",
+      "value": "#0000FF"
+    },
+    {
+      "id": "color3",
+      "name": "Green",
+      "value": "#00FF00"
+    },
+    {
+      "id": "color4",
+      "name": "Yellow",
+      "value": "#FFFF00"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod1",
+      "category": "cat1",
+      "name": "Smartphone",
+      "price": "699.99",
+      "isFeatured": true,
+      "size": "size1",
+      "color": "color1",
+      "images": [{ "id": "img1", "url": "/images/logo.jpg" }]
+    },
+    {
+      "id": "prod2",
+      "category": "cat1",
+      "name": "Smartphone 2",
+      "price": "599.99",
+      "isFeatured": true,
+      "size": "size1",
+      "color": "color1",
+      "images": [{ "id": "img1", "url": "/images/logo.jpg" }]
+    },
+    {
+      "id": "prod3",
+      "category": "cat2",
+      "name": "T-Shirt",
+      "price": "19.99",
+      "isFeatured": false,
+      "size": "size2",
+      "color": "color2",
+      "images": [{ "id": "img2", "url": "/images/logo.jpg" }]
+    },
+    {
+      "id": "prod4",
+      "category": "cat2",
+      "name": "T-Shirt",
+      "price": "19.99",
+      "isFeatured": false,
+      "size": "size2",
+      "color": "color2",
+      "images": [{ "id": "img2", "url": "/images/logo.jpg" }]
+    },
+    {
+      "id": "prod5",
+      "category": "cat2",
+      "name": "T-Shirt 2",
+      "price": "19.99",
+      "isFeatured": false,
+      "size": "size2",
+      "color": "color2",
+      "images": [{ "id": "img2", "url": "/images/logo.jpg" }]
+    },
+    {
+      "id": "prod6",
+      "category": "cat2",
+      "name": "T-Shirt 1",
+      "price": "19.99",
+      "isFeatured": false,
+      "size": "size2",
+      "color": "color2",
+      "images": [{ "id": "img2", "url": "/images/logo.jpg" }]
+    }
+  ]
+}
