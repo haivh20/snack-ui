@@ -3,29 +3,43 @@
 import { ColumnDef } from "@tanstack/react-table";
 
 import { CellAction } from "./cell-action";
-import { Badge } from "@/components/ui/badge";
+import { DiaChi } from "@/types";
 
 export type CustomerColumn = {
-  id: string;
-  name: string;
-  status: number;
+  idkh: string;
+  tenKhachHang: string;
+  gioiTinh: string;
+  trangThai: number;
+  dob: Date;
+  age: number;
+  diaChis: DiaChi[];
 };
 
 export const columns: ColumnDef<CustomerColumn>[] = [
   {
-    accessorKey: "name",
-    header: "Name",
+    accessorKey: "tenKhachHang",
+    header: "tenKhachHang",
   },
 
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "gioiTinh",
+    header: "gioiTinh",
+  },
+
+  {
+    accessorKey: "dob",
+    header: "dob",
+  },
+
+  {
+    accessorKey: "age",
+    header: "age Chi",
+  },
+  {
+    accessorKey: "diaChi",
+    header: "Dia Chi",
     cell: ({ row }) => {
-      return row.original.status === 1 ? (
-        <Badge variant="success">Active</Badge>
-      ) : (
-        <Badge variant="destructive">Inactive</Badge>
-      );
+      return <div>{row.original.diaChis[0].diaChi}</div>;
     },
   },
   {

@@ -29,7 +29,6 @@ import {
 } from "@/components/ui/select";
 import { AlertModal } from "@/components/admin/modals/alert-modal";
 import { Heading } from "@/components/admin/heading";
-import { Category } from "@/types";
 
 const formSchema = z.object({
   name: z.string().min(2),

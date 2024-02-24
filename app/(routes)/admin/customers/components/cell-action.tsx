@@ -23,14 +23,15 @@ interface CellActionProps {
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const router = useRouter();
-  const params = useParams();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const onConfirm = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/customers/${data.id}`);
+      await axios.delete(
+        `http://localhost:8080/api/v1/khach-hang/${data.idkh}`
+      );
       toast.success("Customers deleted.");
       router.refresh();
     } catch (error) {
@@ -63,11 +64,11 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
-          <DropdownMenuItem onClick={() => onCopy(data.id)}>
+          <DropdownMenuItem onClick={() => onCopy(data.idkh)}>
             <Copy className="mr-2 h-4 w-4" /> Copy Id
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={() => router.push(`/admin/customers/${data.id}`)}
+            onClick={() => router.push(`/admin/customers/${data.idkh}`)}
           >
             <Edit className="mr-2 h-4 w-4" /> Update
           </DropdownMenuItem>

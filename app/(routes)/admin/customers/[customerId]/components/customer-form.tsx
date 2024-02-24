@@ -29,25 +29,24 @@ import {
 } from "@/components/ui/select";
 import { AlertModal } from "@/components/admin/modals/alert-modal";
 import { Heading } from "@/components/admin/heading";
-import { Category } from "@/types";
 
 const formSchema = z.object({
   name: z.string().min(2),
   status: z.number(),
 });
 
-type CategoryFormValues = z.infer<typeof formSchema>;
+type CustomerFormValues = z.infer<typeof formSchema>;
 
-export interface CategoryProps {
+export interface CustomerProps {
   name: string;
   status: number;
 }
 
-interface CategoryFormProps {
-  initialData: CategoryProps | null;
+interface CustomerFormProps {
+  initialData: CustomerProps | null;
 }
 
-export const CustomerForm: React.FC<CategoryFormProps> = ({ initialData }) => {
+export const CustomerForm: React.FC<CustomerFormProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
 
@@ -59,7 +58,7 @@ export const CustomerForm: React.FC<CategoryFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? "Customer updated." : "Customer created.";
   const action = initialData ? "Save changes" : "Create";
 
-  const form = useForm<CategoryFormValues>({
+  const form = useForm<CustomerFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       name: "",
@@ -67,9 +66,43 @@ export const CustomerForm: React.FC<CategoryFormProps> = ({ initialData }) => {
     },
   });
 
-  const onSubmit = async (data: CategoryFormValues) => {};
+  const onSubmit = async (data: CustomerFormValues) => {
+    try {
+      setLoading(true);
+      if (initialData) {
+        await axios.patch(
+          `http://localhost:8080/api/v1/khach-hang/${params.customerId}`,
+          data
+        );
+      } else {
+        await axios.post(`http://localhost:8080/api/v1/khach-hang/add`, data);
+      }
+      router.refresh();
+      router.push(`/admin/customers`);
+      toast.success(toastMessage);
+    } catch (error: any) {
+      toast.error("Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const onDelete = async () => {};
+  const onDelete = async () => {
+    try {
+      setLoading(true);
+      await axios.delete(
+        `http://localhost:8080/api/v1/khach-hang/${params.customerId}`
+      );
+      router.refresh();
+      router.push(`/admin/customers`);
+      toast.success("Color deleted.");
+    } catch (error: any) {
+      toast.error("Make sure you removed all products using this color first.");
+    } finally {
+      setLoading(false);
+      setOpen(false);
+    }
+  };
 
   return (
     <>
@@ -104,13 +137,9 @@ export const CustomerForm: React.FC<CategoryFormProps> = ({ initialData }) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>tenKhachHang</FormLabel>
                   <FormControl>
-                    <Input
-                      disabled={loading}
-                      placeholder="Category name"
-                      {...field}
-                    />
+                    <Input disabled={loading} placeholder="Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

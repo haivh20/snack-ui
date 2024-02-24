@@ -1,14 +1,15 @@
+import { getCustomerId } from "@/actions/get-customers";
 import { CustomerForm } from "./components/customer-form";
 
-const CategoryPage = async ({ params }: { params: { categoryId: string } }) => {
-  const category = null;
+const CustomerPage = async ({ params }: { params: { customerId: string } }) => {
+  const customer = await getCustomerId(params.customerId);
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <CustomerForm initialData={category} />
+        <CustomerForm initialData={customer} />
       </div>
     </div>
   );
 };
 
-export default CategoryPage;
+export default CustomerPage;
